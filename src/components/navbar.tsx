@@ -11,7 +11,7 @@ import StarIcon from "@material-ui/icons/Star";
 import NotesIcon from "@material-ui/icons/Notes";
 
 const Navbar = () => {
-  const classes = useStyles({});
+  const classes = useStyles();
 
   return (
     <Drawer
@@ -23,7 +23,7 @@ const Navbar = () => {
       anchor="left"
     >
       <div className={classes.toolbar}>
-        <AppBar position="static">
+        <AppBar color="default" position="static">
           <Toolbar style={{ justifyContent: "center" }}>{jottyIcon}</Toolbar>
         </AppBar>
       </div>
@@ -47,8 +47,10 @@ const Navbar = () => {
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles((theme: Theme) => {
+  getIcon(theme);
+
+  return createStyles({
     drawer: {
       width: drawerWidth,
       flexShrink: 0
@@ -60,15 +62,25 @@ const useStyles = makeStyles((theme: Theme) =>
     centre: {
       justifyContent: "center"
     }
-  })
-);
+  });
+});
 
-const jottyIcon = (
-  <img
-    src={require("../images/jotty-light.png")}
-    alt="jotty logo"
-    height="50rem"
-  />
-);
+const getIcon = (theme: Theme) =>
+  (jottyIcon =
+    theme.palette.type === "dark" ? (
+      <img
+        src={require("../images/jotty-light.png")}
+        alt="jotty logo"
+        height="50rem"
+      />
+    ) : (
+      <img
+        src={require("../images/jotty-dark.png")}
+        alt="jotty logo"
+        height="50rem"
+      />
+    ));
+
+let jottyIcon: JSX.Element;
 
 export default Navbar;

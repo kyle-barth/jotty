@@ -9,6 +9,7 @@ import Note from "./components/note";
 import Switch from "@material-ui/core/Switch";
 import { PaletteType } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import DarkToggleIcon from "@material-ui/icons/Brightness4";
 
 const App: React.FC = () => {
   const [themeState, setThemeState] = React.useState<PaletteType>("dark");
@@ -19,7 +20,7 @@ const App: React.FC = () => {
     }
   });
 
-  function handleChange(event: any) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     setThemeState(event.target.checked ? "dark" : "light");
   }
 
@@ -39,9 +40,10 @@ const App: React.FC = () => {
                 inputProps={{ "aria-label": "toggle user palette" }}
               />
             }
-            label="yeet"
+            label={<DarkToggleIcon />}
             labelPlacement="start"
           />
+
           <Note
             title="Test"
             date="August 20th 2019"
