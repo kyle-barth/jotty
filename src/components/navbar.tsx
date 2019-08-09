@@ -22,11 +22,9 @@ const Navbar = () => {
       }}
       anchor="left"
     >
-      <div className={classes.toolbar}>
-        <AppBar color="primary" position="static">
-          <Toolbar style={{ justifyContent: "center" }}>{JottyIcon}</Toolbar>
-        </AppBar>
-      </div>
+      <AppBar color="primary" position="static">
+        <Toolbar style={{ justifyContent: "center" }}>{JottyIcon}</Toolbar>
+      </AppBar>
       <List>
         <ListItem button>
           <ListItemIcon>
@@ -56,7 +54,6 @@ const useStyles = makeStyles((theme: Theme) => {
     drawerPaper: {
       width: drawerWidth
     },
-    toolbar: theme.mixins.toolbar,
     centre: {
       justifyContent: "center"
     }
