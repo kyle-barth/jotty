@@ -23,8 +23,8 @@ const Navbar = () => {
       anchor="left"
     >
       <div className={classes.toolbar}>
-        <AppBar color="default" position="static">
-          <Toolbar style={{ justifyContent: "center" }}>{jottyIcon}</Toolbar>
+        <AppBar color="primary" position="static">
+          <Toolbar style={{ justifyContent: "center" }}>{JottyIcon}</Toolbar>
         </AppBar>
       </div>
       <List>
@@ -48,8 +48,6 @@ const Navbar = () => {
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) => {
-  getIcon(theme);
-
   return createStyles({
     drawer: {
       width: drawerWidth,
@@ -65,22 +63,12 @@ const useStyles = makeStyles((theme: Theme) => {
   });
 });
 
-const getIcon = (theme: Theme) =>
-  (jottyIcon =
-    theme.palette.type === "dark" ? (
-      <img
-        src={require("../images/jotty-light.png")}
-        alt="jotty logo"
-        height="50rem"
-      />
-    ) : (
-      <img
-        src={require("../images/jotty-dark.png")}
-        alt="jotty logo"
-        height="50rem"
-      />
-    ));
-
-let jottyIcon: JSX.Element;
+const JottyIcon = (
+  <img
+    src={require("../images/jotty-light.png")}
+    alt="jotty logo"
+    height="50rem"
+  />
+);
 
 export default Navbar;
