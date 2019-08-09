@@ -41,8 +41,8 @@ const Navbar = () => {
   }
 
   const saveNewFolder = (folderName: string) => {
-    let savedFolders: string | null = localStorage.getItem('folders');
-    let newFolders: string[] = savedFolders ? [...JSON.parse(savedFolders), folderName] : [folderName];
+    const savedFolders: string | null = localStorage.getItem('folders');
+    const newFolders: string[] = savedFolders ? [...JSON.parse(savedFolders), folderName] : [folderName];
 
     localStorage.setItem('folders', JSON.stringify(newFolders));
     setFolders(newFolders);
