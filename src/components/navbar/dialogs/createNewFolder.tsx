@@ -61,6 +61,10 @@ function SimpleDialog(props: SimpleDialogProps) {
 
 
   function handleClose() {
+    onClose();
+  }
+  
+  function handleSave() {
     onClose(folderName);
   }
 
@@ -97,7 +101,7 @@ function SimpleDialog(props: SimpleDialogProps) {
 
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleClose} color="secondary">
+        <Button onClick={handleSave} color="secondary">
           Add folder
         </Button>
       </DialogActions>
