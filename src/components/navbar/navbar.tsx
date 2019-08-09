@@ -102,14 +102,13 @@ const Navbar = () => {
           <Collapse in={foldersState} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <CreateNewFolder onCreate={saveNewFolder}/>
-              {folders.map(x => 
-              <ListItem
-        button
-        className={classes.nested}
-        color="secondary"
-      >
-        <ListItemText primary={x} />
-      </ListItem>)}
+              {
+                folders.map(name => 
+                  <ListItem button className={classes.nested} color="secondary">
+                    <ListItemText primary={name} />
+                  </ListItem>
+                )
+              }
             </List>
           </Collapse>
         </List>
