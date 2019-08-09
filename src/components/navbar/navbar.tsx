@@ -27,9 +27,30 @@ const Navbar = () => {
   const classes = useStyles();
 
   const [foldersState, setFoldersOpen] = React.useState(true);
+  const [folders, setFolders] = React.useState<string[]>([])
+
   function handleCustomFolderToggle() {
     setFoldersOpen(!foldersState);
   }
+
+  const updateFolders = () => {
+    const folders: string | null = localStorage.getItem('folders');
+    if(folders) {
+      setFolders(JSON.parse(folders))
+    }
+  }
+
+  const saveNewFolder = (folderName: string) => {
+    let savedFolders: string | null = localStorage.getItem('folders');
+    let newFolders: string[] = savedFolders ? [...JSON.parse(savedFolders), folderName] : [folderName];
+
+    localStorage.setItem('folders', JSON.stringify(newFolders));
+    setFolders(newFolders);
+  }
+
+  React.useEffect(()=>{
+    updateFolders();
+  }, [])
 
   return (
     <div>
@@ -80,7 +101,15 @@ const Navbar = () => {
           </ListItem>
           <Collapse in={foldersState} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <CreateNewFolder />
+              <CreateNewFolder onCreate={saveNewFolder}/>
+              {folders.map(x => 
+              <ListItem
+        button
+        className={classes.nested}
+        color="secondary"
+      >
+        <ListItemText primary={x} />
+      </ListItem>)}
             </List>
           </Collapse>
         </List>

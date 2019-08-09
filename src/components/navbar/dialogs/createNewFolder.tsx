@@ -18,7 +18,8 @@ import {
 import CreateFolderIcon from "@material-ui/icons/CreateNewFolderOutlined";
 import CloseIcon from "@material-ui/icons/Close";
 
-const CreateNewFolder = () => {
+const createValueSetter = (setValue: Function) => (event: any) => setValue(event.target.value);
+const CreateNewFolder = (props: any) => {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -26,7 +27,11 @@ const CreateNewFolder = () => {
   function handleClickOpen() {
     setOpen(true);
   }
-  const handleClose = () => {
+
+  const handleClose = (folderName: string) => {
+    if(folderName){
+      props.onCreate(folderName)
+    }
     setOpen(false);
   };
 
@@ -48,12 +53,15 @@ const CreateNewFolder = () => {
   );
 };
 
-function SimpleDialog(props: SimpleDialogProps) {
+function SimpleDialog(props: any) {
+  const [folderName, setFolderName] = React.useState('');
+
   const classes = useStyles();
   const { onClose, open } = props;
 
+
   function handleClose() {
-    onClose();
+    onClose(folderName);
   }
 
   return (
@@ -83,6 +91,7 @@ function SimpleDialog(props: SimpleDialogProps) {
           id="name"
           label="Folder Name"
           fullWidth
+          onChange={createValueSetter(setFolderName)}
         />
       </DialogContent>
 
