@@ -1,15 +1,21 @@
 import React from "react";
 import "./App.css";
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
-import { createMuiTheme } from "@material-ui/core/styles";
+
+import {
+  createStyles,
+  Theme,
+  makeStyles,
+  createMuiTheme
+} from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Navbar from "./components/navbar";
-import Note from "./components/note";
-import Switch from "@material-ui/core/Switch";
-import { PaletteType } from "@material-ui/core";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+
+import { PaletteType, Switch, FormControlLabel } from "@material-ui/core";
+
 import DarkToggleIcon from "@material-ui/icons/Brightness4";
+
+import Navbar from "./components/navbar/navbar";
+import Note from "./components/note";
 
 const App: React.FC = () => {
   const [themeState, setThemeState] = React.useState<PaletteType>("dark");
@@ -20,7 +26,7 @@ const App: React.FC = () => {
     }
   });
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleThemeChange(event: React.ChangeEvent<HTMLInputElement>) {
     setThemeState(event.target.checked ? "dark" : "light");
   }
 
@@ -33,17 +39,17 @@ const App: React.FC = () => {
         <Navbar />
         <main className={classes.content}>
           <FormControlLabel
+            style={{ marginLeft: "auto" }}
             control={
               <Switch
                 defaultChecked
-                onChange={handleChange}
+                onChange={handleThemeChange}
                 inputProps={{ "aria-label": "toggle user palette" }}
               />
             }
             label={<DarkToggleIcon />}
             labelPlacement="start"
           />
-
           <Note
             title="Test"
             date="August 20th 2019"

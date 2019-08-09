@@ -21,7 +21,7 @@ const Note = (props: Note) => {
   return (
     <Card>
       <CardHeader
-        title={<h3 className={classes.noteTitle}>props.title</h3>}
+        title={<h3 className={classes.noteTitle}>{props.title}</h3>}
         subheader={date}
         action={
           <div>
