@@ -68,9 +68,8 @@ function SimpleDialog(props: SimpleDialogProps) {
           aria-label="close"
           className={classes.closeButton}
           onClick={onClose}
-          color="secondary"
         >
-          <CloseIcon color="secondary" />
+          <CloseIcon />
         </IconButton>
       </DialogTitle>
 
@@ -105,8 +104,7 @@ const useStyles = makeStyles((theme: Theme) => {
     closeButton: {
       position: "absolute",
       right: theme.spacing(1),
-      top: theme.spacing(1),
-      color: theme.palette.grey[500]
+      top: theme.spacing(1)
     },
     dialogTitle: {
       marginBlockStart: 0,
