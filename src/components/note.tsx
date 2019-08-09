@@ -4,7 +4,8 @@ import CardContent from "@material-ui/core/CardContent";
 import { CardHeader, IconButton, Checkbox } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import StarIcon from "@material-ui/icons/Star";
-import StarBorder from "@material-ui/icons/StarBorder";
+import StarIconOutlined from "@material-ui/icons/StarOutlined";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
 
 type Note = {
   title: string;
@@ -13,17 +14,19 @@ type Note = {
 };
 
 const Note = (props: Note) => {
+  const classes = useStyles({});
+
   const date = "Jotted down on " + props.date;
 
   return (
     <Card>
       <CardHeader
-        title={props.title}
+        title={<h3 className={classes.noteTitle}>props.title</h3>}
         subheader={date}
         action={
           <div>
             <Checkbox
-              icon={<StarBorder />}
+              icon={<StarIconOutlined />}
               checkedIcon={<StarIcon />}
               color="primary"
               // inputProps={{
@@ -42,5 +45,14 @@ const Note = (props: Note) => {
     </Card>
   );
 };
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    noteTitle: {
+      marginBlockStart: 0,
+      marginBlockEnd: 0
+    }
+  })
+);
 
 export default Note;
