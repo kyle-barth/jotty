@@ -38,7 +38,7 @@ const Navbar = () => {
     setFolders(newFolders);
   }
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setFolders(getFolders())
   }, [])
 
