@@ -132,12 +132,8 @@ export interface SimpleDialogProps {
 function useTextField(initialValue: string) {
   const [value, setValue] = useState(initialValue);
   const onChange = (event: InputEvent) => setValue(event.target.value);
-  
-  return {
-    value,
-    onChange,
-  }
 
+  return { value, onChange }
 }
 
 export default CreateNewFolder;
