@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-
 import {
   IconButton,
   ListItem,
@@ -14,9 +13,10 @@ import {
   DialogContentText,
   DialogActions
 } from "@material-ui/core";
-
 import CreateFolderIcon from "@material-ui/icons/CreateNewFolderOutlined";
 import CloseIcon from "@material-ui/icons/Close";
+
+type InputEvent = React.ChangeEvent<HTMLInputElement>;
 
 const CreateNewFolder = (props: { onCreate: Function }) => {
   const classes = useStyles();
@@ -129,12 +129,10 @@ export interface SimpleDialogProps {
   onClose: (folderName?: string) => void;
 }
 
-function useFormInput<T>(initialValue: T) {
+function useFormInput(initialValue: string) {
   const [value, setValue] = useState(initialValue);
-  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setValue(event.target.value);
-  }
-
+  const onChange = (event: InputEvent) => setValue(event.target.value);
+  
   return {
     value,
     onChange,
