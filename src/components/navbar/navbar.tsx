@@ -1,6 +1,5 @@
 import React from "react";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
-
 import {
   IconButton,
   Typography,
@@ -14,7 +13,6 @@ import {
   ListItemText,
   Collapse
 } from "@material-ui/core";
-
 import StarIcon from "@material-ui/icons/Star";
 import NotesIcon from "@material-ui/icons/Notes";
 import AccountIcon from "@material-ui/icons/AccountCircle";
@@ -33,23 +31,15 @@ const Navbar = () => {
     setFoldersOpen(!foldersState);
   }
 
-  const updateFolders = () => {
-    const folders: string | null = localStorage.getItem('folders');
-    if(folders) {
-      setFolders(JSON.parse(folders))
-    }
-  }
-
   const saveNewFolder = (folderName: string) => {
-    const savedFolders: string | null = localStorage.getItem('folders');
-    const newFolders: string[] = savedFolders ? [...JSON.parse(savedFolders), folderName] : [folderName];
+    const newFolders: string[] = [...getFolders(), folderName];
 
     localStorage.setItem('folders', JSON.stringify(newFolders));
     setFolders(newFolders);
   }
 
   React.useEffect(()=>{
-    updateFolders();
+    setFolders(getFolders())
   }, [])
 
   return (
@@ -146,5 +136,16 @@ const JottyIcon = (
     height="75rem"
   />
 );
+
+function areStrings(val: any): val is string[] {
+  return Array.isArray(val) && val.every(x => typeof x === 'string')
+}
+
+function getFolders(): string[] {
+  const savedFolders: string | null = localStorage.getItem('folders');
+  const parsedFolders: any = savedFolders && JSON.parse(savedFolders);
+
+  return areStrings(parsedFolders) ? parsedFolders : [];
+}
 
 export default Navbar;
