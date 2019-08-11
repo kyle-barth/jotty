@@ -53,7 +53,7 @@ const CreateNewFolder = (props: { onCreate: Function }) => {
 };
 
 function SimpleDialog(props: SimpleDialogProps) {
-  const folder = useFormInput('')
+  const folder = useTextField('')
   const classes = useStyles();
   const { onClose, open } = props;
 
@@ -129,7 +129,7 @@ export interface SimpleDialogProps {
   onClose: (folderName?: string) => void;
 }
 
-function useFormInput(initialValue: string) {
+function useTextField(initialValue: string) {
   const [value, setValue] = useState(initialValue);
   const onChange = (event: InputEvent) => setValue(event.target.value);
   
