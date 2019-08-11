@@ -57,7 +57,6 @@ function SimpleDialog(props: SimpleDialogProps) {
   const classes = useStyles();
   const { onClose, open } = props;
 
-
   function handleClose() {
     onClose();
   }
