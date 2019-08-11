@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 
 import {
@@ -18,11 +18,10 @@ import {
 import CreateFolderIcon from "@material-ui/icons/CreateNewFolderOutlined";
 import CloseIcon from "@material-ui/icons/Close";
 
-const createValueSetter = (setValue: Function) => (event: any) => setValue(event.target.value);
 const CreateNewFolder = (props: { onCreate: Function }) => {
   const classes = useStyles();
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   function handleClickOpen() {
     setOpen(true);
@@ -54,8 +53,7 @@ const CreateNewFolder = (props: { onCreate: Function }) => {
 };
 
 function SimpleDialog(props: SimpleDialogProps) {
-  const [folderName, setFolderName] = React.useState('');
-
+  const folder = useFormInput('')
   const classes = useStyles();
   const { onClose, open } = props;
 
@@ -65,7 +63,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   }
   
   function handleSave() {
-    onClose(folderName);
+    onClose(folder.value);
   }
 
   return (
@@ -90,12 +88,12 @@ function SimpleDialog(props: SimpleDialogProps) {
           Group notes together by defining custom folders!
         </DialogContentText>
         <TextField
+          { ...folder }
           autoFocus
           margin="dense"
           id="name"
           label="Folder Name"
           fullWidth
-          onChange={createValueSetter(setFolderName)}
         />
       </DialogContent>
 
@@ -129,6 +127,19 @@ const useStyles = makeStyles((theme: Theme) => {
 export interface SimpleDialogProps {
   open: boolean;
   onClose: (folderName?: string) => void;
+}
+
+function useFormInput<T>(initialValue: T) {
+  const [value, setValue] = useState(initialValue);
+  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setValue(event.target.value);
+  }
+
+  return {
+    value,
+    onChange,
+  }
+
 }
 
 export default CreateNewFolder;
