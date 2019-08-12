@@ -50,7 +50,7 @@ function SimpleDialog(props: SimpleDialogProps) {
       open={open}
     >
       <DialogTitle id="form-dialog-title">
-        <h3 className={classes.dialogTitle}>Create new folder</h3>
+        <p className={classes.dialogTitle}>Create new folder</p>
         <IconButton
           aria-label="close"
           className={classes.closeButton}
@@ -75,9 +75,7 @@ function SimpleDialog(props: SimpleDialogProps) {
 
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleClose} color="secondary">
-          Add folder
-        </Button>
+        <Button onClick={handleClose} color="secondary">Add Folder</Button>
       </DialogActions>
     </Dialog>
   );
