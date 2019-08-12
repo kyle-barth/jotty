@@ -2,8 +2,6 @@ import React from "react";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 
 import {
-  IconButton,
-  Typography,
   Divider,
   Drawer,
   AppBar,
@@ -17,11 +15,12 @@ import {
 
 import StarIcon from "@material-ui/icons/Star";
 import NotesIcon from "@material-ui/icons/Notes";
-import AccountIcon from "@material-ui/icons/AccountCircle";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FolderIcon from "@material-ui/icons/Folder";
+
 import CreateNewFolder from "./dialogs/createNewFolder";
+import AccountSettings from "./dialogs/accountSetings";
 
 const Navbar = () => {
   const classes = useStyles();
@@ -33,11 +32,6 @@ const Navbar = () => {
 
   return (
     <div>
-      <AppBar color="primary" position="static">
-        <Toolbar>
-          <Typography variant="h6">test</Typography>
-        </Toolbar>
-      </AppBar>
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -49,9 +43,7 @@ const Navbar = () => {
         <AppBar color="primary" position="static">
           <Toolbar className={classes.appbarSubsection}>
             {JottyIcon}
-            <IconButton aria-label="user account">
-              <AccountIcon style={{ color: "white" }} />
-            </IconButton>
+            <AccountSettings />
           </Toolbar>
         </AppBar>
 
@@ -105,9 +97,6 @@ const useStyles = makeStyles((theme: Theme) => {
       flexDirection: "column",
       height: "15rem"
     },
-    nested: {
-      paddingLeft: theme.spacing(4)
-    }
   });
 });
 

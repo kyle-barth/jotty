@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 
 import {
+  fade,
   createStyles,
   Theme,
   makeStyles,
@@ -10,7 +11,17 @@ import {
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-import { PaletteType, Switch, FormControlLabel } from "@material-ui/core";
+import {
+  PaletteType,
+  Switch,
+  FormControlLabel,
+  Grid,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  Divider
+} from "@material-ui/core";
 
 import DarkToggleIcon from "@material-ui/icons/Brightness4";
 
@@ -39,7 +50,7 @@ const App: React.FC = () => {
         <Navbar />
         <main className={classes.content}>
           <FormControlLabel
-            style={{ marginLeft: "auto" }}
+            style={{ float: "right" }}
             control={
               <Switch
                 defaultChecked
@@ -50,11 +61,88 @@ const App: React.FC = () => {
             label={<DarkToggleIcon />}
             labelPlacement="start"
           />
-          <Note
-            title="Test"
-            date="August 20th 2019"
-            body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda quisquam nihil, sunt ea perferendis placeat necessitatibus voluptas similique a, officia recusandae laboriosam itaque vel? Alias neque fugiat consectetur odio veritatis vel praesentium aliquid ratione soluta! Quam nobis expedita sint molestias."
-          />
+
+          <Grid container spacing={3}>
+            <Grid item xs={6} sm={6}>
+              <List>
+                <ListItem>
+                  <ListItemText
+                    primary={
+                      <Typography variant="h4" className={classes.listTitle}>
+                        Notes:
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+
+                <ListItem button>
+                  <ListItemText
+                    primary={
+                      <Typography variant="h6" noWrap>
+                        Example note title
+                      </Typography>
+                    }
+                    secondary={
+                      <Typography noWrap>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Dolor molestiae vero veniam voluptatem architecto
+                        placeat dolore similique expedita quam, mollitia quis
+                        reiciendis minus neque a saepe facilis, provident, eum
+                        nobis.
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+
+                <Divider variant="middle" />
+                <ListItem button>
+                  <ListItemText
+                    primary={
+                      <Typography variant="h6" noWrap>
+                        Example note title
+                      </Typography>
+                    }
+                    secondary={
+                      <Typography noWrap>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Dolor molestiae vero veniam voluptatem architecto
+                        placeat dolore similique expedita quam, mollitia quis
+                        reiciendis minus neque a saepe facilis, provident, eum
+                        nobis.
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+
+                <Divider variant="middle" />
+                <ListItem button>
+                  <ListItemText
+                    primary={
+                      <Typography variant="h6" noWrap>
+                        Example note title
+                      </Typography>
+                    }
+                    secondary={
+                      <Typography noWrap>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Dolor molestiae vero veniam voluptatem architecto
+                        placeat dolore similique expedita quam, mollitia quis
+                        reiciendis minus neque a saepe facilis, provident, eum
+                        nobis.
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+              </List>
+            </Grid>
+            <Grid item xs={6} sm={6}>
+              <Note
+                title="Example note title"
+                date="August 20th 2019"
+                body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda quisquam nihil, sunt ea perferendis placeat necessitatibus voluptas similique a, officia recusandae laboriosam itaque vel? Alias neque fugiat consectetur odio veritatis vel praesentium aliquid ratione soluta! Quam nobis expedita sint molestias."
+              />
+            </Grid>
+          </Grid>
         </main>
       </div>
     </ThemeProvider>
@@ -69,6 +157,9 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       flexGrow: 1,
       padding: theme.spacing(3)
+    },
+    listTitle: {
+      fontWeight: "bold"
     }
   })
 );
