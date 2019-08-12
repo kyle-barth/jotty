@@ -96,8 +96,8 @@ const Navbar = () => {
         <Collapse in={foldersState} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <CreateNewFolder onCreate={saveNewFolder} />
-            {folders.map(name => (
-              <ListItem button color="secondary">
+            {folders.map((name, index) => (
+              <ListItem button key={index} color="secondary">
                 <ListItemText primary={name} />
               </ListItem>
             ))}
