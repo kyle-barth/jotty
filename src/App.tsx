@@ -19,13 +19,15 @@ import {
   ListItem,
   ListItemText,
   Typography,
-  Divider
+  Divider,
+  Button
 } from "@material-ui/core";
 
 import DarkToggleIcon from "@material-ui/icons/Brightness4";
+import NoteAddIcon from "@material-ui/icons/NoteAddOutlined";
 
 import Navbar from "./components/navbar/navbar";
-import Note from "./components/note";
+import Note from "./components/notes/note";
 
 const App: React.FC = () => {
   const [themeState, setThemeState] = React.useState<PaletteType>("dark");
@@ -48,28 +50,38 @@ const App: React.FC = () => {
       <div className={classes.root}>
         <Navbar />
         <main className={classes.content}>
-          <FormControlLabel
-            style={{ float: "right" }}
-            control={
-              <Switch
-                defaultChecked
-                onChange={handleThemeChange}
-                inputProps={{ "aria-label": "toggle user palette" }}
-              />
-            }
-            label={<DarkToggleIcon />}
-            labelPlacement="start"
-          />
-
           <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <FormControlLabel
+                style={{ float: "right" }}
+                control={
+                  <Switch
+                    defaultChecked
+                    onChange={handleThemeChange}
+                    inputProps={{ "aria-label": "toggle user palette" }}
+                  />
+                }
+                label={<DarkToggleIcon />}
+                labelPlacement="start"
+              />
+            </Grid>
             <Grid item xs={6} sm={6}>
               <List>
                 <ListItem>
                   <ListItemText
                     primary={
-                      <Typography variant="h4" className={classes.listTitle}>
-                        Notes:
-                      </Typography>
+                      <div style={{ display: "flex" }}>
+                        <Typography variant="h4" className={classes.listTitle}>
+                          All Notes:
+                        </Typography>
+
+                        <span className={classes.spacer} />
+
+                        <Button color="default" className={classes.button}>
+                          Add Note
+                          <NoteAddIcon className={classes.rightIcon} />
+                        </Button>
+                      </div>
                     }
                   />
                 </ListItem>
@@ -159,6 +171,15 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     listTitle: {
       fontWeight: "bold"
+    },
+    button: {
+      margin: theme.spacing(1)
+    },
+    rightIcon: {
+      marginLeft: theme.spacing(1)
+    },
+    spacer: {
+      margin: "auto"
     }
   })
 );
