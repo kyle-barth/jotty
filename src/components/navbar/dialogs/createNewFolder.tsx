@@ -16,10 +16,14 @@ import {
 import CreateFolderIcon from "@material-ui/icons/CreateNewFolderOutlined";
 import CloseIcon from "@material-ui/icons/Close";
 
+import useSharedState from "shared/use-shared-state";
+import { foldersSubject } from "shared/global-store";
+
 type InputEvent = React.ChangeEvent<HTMLInputElement>;
 
-const CreateNewFolder = (props: { onCreate: Function }) => {
+const CreateNewFolder = () => {
   const classes = useStyles();
+  const [folders, setFolders] = useSharedState(foldersSubject);
 
   const [open, setOpen] = useState(false);
 
@@ -29,7 +33,7 @@ const CreateNewFolder = (props: { onCreate: Function }) => {
 
   const handleClose = (folderName?: string) => {
     if (folderName) {
-      props.onCreate(folderName)
+      setFolders([...folders, folderName]);
     }
     setOpen(false);
   };
@@ -87,7 +91,7 @@ function SimpleDialog(props: SimpleDialogProps) {
           Group notes together by defining custom folders!
         </DialogContentText>
         <TextField
-          {...folder}
+          onChange={folder.onChange}
           autoFocus
           margin="dense"
           id="name"
