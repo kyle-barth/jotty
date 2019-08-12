@@ -24,7 +24,7 @@ const Navbar = () => {
   const classes = useStyles();
 
   const [foldersState, setFoldersOpen] = React.useState(true);
-  const [folders, setFolders] = React.useState<string[]>([])
+  const [folders, setFolders] = React.useState<string[]>([]);
 
   function handleCustomFolderToggle() {
     setFoldersOpen(!foldersState);
@@ -33,13 +33,13 @@ const Navbar = () => {
   const saveNewFolder = (folderName: string) => {
     const newFolders: string[] = [...getFolders(), folderName];
 
-    localStorage.setItem('folders', JSON.stringify(newFolders));
+    localStorage.setItem("folders", JSON.stringify(newFolders));
     setFolders(newFolders);
-  }
+  };
 
   React.useEffect(() => {
-    setFolders(getFolders())
-  }, [])
+    setFolders(getFolders());
+  }, []);
 
   return (
     <div>
@@ -83,14 +83,12 @@ const Navbar = () => {
           </ListItem>
           <Collapse in={foldersState} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <CreateNewFolder onCreate={saveNewFolder}/>
-              {
-                folders.map(name => 
-                  <ListItem button className={classes.nested} color="secondary">
-                    <ListItemText primary={name} />
-                  </ListItem>
-                )
-              }
+              <CreateNewFolder onCreate={saveNewFolder} />
+              {folders.map(name => (
+                <ListItem button color="secondary">
+                  <ListItemText primary={name} />
+                </ListItem>
+              ))}
             </List>
           </Collapse>
         </List>
@@ -114,7 +112,7 @@ const useStyles = makeStyles((theme: Theme) => {
       justifyContent: "center",
       flexDirection: "column",
       height: "15rem"
-    },
+    }
   });
 });
 
@@ -127,11 +125,11 @@ const JottyIcon = (
 );
 
 function areStrings(val: any): val is string[] {
-  return Array.isArray(val) && val.every(x => typeof x === 'string')
+  return Array.isArray(val) && val.every(x => typeof x === "string");
 }
 
 function getFolders(): string[] {
-  const savedFolders: string | null = localStorage.getItem('folders');
+  const savedFolders: string | null = localStorage.getItem("folders");
   const parsedFolders: any = savedFolders && JSON.parse(savedFolders);
 
   return areStrings(parsedFolders) ? parsedFolders : [];

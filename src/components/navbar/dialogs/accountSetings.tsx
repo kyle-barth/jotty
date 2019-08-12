@@ -3,9 +3,6 @@ import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 
 import {
   IconButton,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   TextField,
   Button,
   Dialog,
@@ -19,8 +16,6 @@ import AccountIcon from "@material-ui/icons/AccountCircle";
 import CloseIcon from "@material-ui/icons/Close";
 
 const AccountSettings = () => {
-  const classes = useStyles();
-
   const [open, setOpen] = React.useState(false);
 
   function handleClickOpen() {
