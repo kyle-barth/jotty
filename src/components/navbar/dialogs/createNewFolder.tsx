@@ -91,7 +91,7 @@ function SimpleDialog(props: SimpleDialogProps) {
           Group notes together by defining custom folders!
         </DialogContentText>
         <TextField
-          onChange={folder.onChange}
+          {...folder}
           autoFocus
           margin="dense"
           id="name"

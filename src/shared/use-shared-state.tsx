@@ -13,7 +13,7 @@ function useSharedState<T>(subject: BehaviorSubject<T>): stateUtils<T> {
       .subscribe((value: T) => setState(value));
 
     return () => sub.unsubscribe();
-  }, []);
+  }, [subject]);
 
   const newSetState = (state: T) => subject.next(state);
   return [value, newSetState];
