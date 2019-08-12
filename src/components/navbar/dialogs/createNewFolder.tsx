@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-
 import {
   IconButton,
   ListItem,
@@ -14,19 +13,24 @@ import {
   DialogContentText,
   DialogActions
 } from "@material-ui/core";
-
 import CreateFolderIcon from "@material-ui/icons/CreateNewFolderOutlined";
 import CloseIcon from "@material-ui/icons/Close";
 
-const CreateNewFolder = () => {
+type InputEvent = React.ChangeEvent<HTMLInputElement>;
+
+const CreateNewFolder = (props: { onCreate: Function }) => {
   const classes = useStyles();
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   function handleClickOpen() {
     setOpen(true);
   }
-  const handleClose = () => {
+
+  const handleClose = (folderName?: string) => {
+    if(folderName){
+      props.onCreate(folderName)
+    }
     setOpen(false);
   };
 
@@ -49,11 +53,16 @@ const CreateNewFolder = () => {
 };
 
 function SimpleDialog(props: SimpleDialogProps) {
+  const folder = useTextField('')
   const classes = useStyles();
   const { onClose, open } = props;
 
   function handleClose() {
     onClose();
+  }
+  
+  function handleSave() {
+    onClose(folder.value);
   }
 
   return (
@@ -67,7 +76,7 @@ function SimpleDialog(props: SimpleDialogProps) {
         <IconButton
           aria-label="close"
           className={classes.closeButton}
-          onClick={onClose}
+          onClick={handleClose}
         >
           <CloseIcon />
         </IconButton>
@@ -78,6 +87,7 @@ function SimpleDialog(props: SimpleDialogProps) {
           Group notes together by defining custom folders!
         </DialogContentText>
         <TextField
+          { ...folder }
           autoFocus
           margin="dense"
           id="name"
@@ -88,7 +98,7 @@ function SimpleDialog(props: SimpleDialogProps) {
 
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleClose} color="secondary">
+        <Button onClick={handleSave} color="secondary">
           Add folder
         </Button>
       </DialogActions>
@@ -115,7 +125,14 @@ const useStyles = makeStyles((theme: Theme) => {
 
 export interface SimpleDialogProps {
   open: boolean;
-  onClose: () => void;
+  onClose: (folderName?: string) => void;
+}
+
+function useTextField(initialValue: string) {
+  const [value, setValue] = useState(initialValue);
+  const onChange = (event: InputEvent) => setValue(event.target.value);
+
+  return { value, onChange }
 }
 
 export default CreateNewFolder;

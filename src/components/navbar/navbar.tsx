@@ -1,6 +1,5 @@
 import React from "react";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
-
 import {
   Divider,
   Drawer,
@@ -12,7 +11,6 @@ import {
   ListItemText,
   Collapse
 } from "@material-ui/core";
-
 import StarIcon from "@material-ui/icons/Star";
 import NotesIcon from "@material-ui/icons/Notes";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
@@ -26,9 +24,22 @@ const Navbar = () => {
   const classes = useStyles();
 
   const [foldersState, setFoldersOpen] = React.useState(true);
+  const [folders, setFolders] = React.useState<string[]>([])
+
   function handleCustomFolderToggle() {
     setFoldersOpen(!foldersState);
   }
+
+  const saveNewFolder = (folderName: string) => {
+    const newFolders: string[] = [...getFolders(), folderName];
+
+    localStorage.setItem('folders', JSON.stringify(newFolders));
+    setFolders(newFolders);
+  }
+
+  React.useEffect(() => {
+    setFolders(getFolders())
+  }, [])
 
   return (
     <div>
@@ -72,7 +83,14 @@ const Navbar = () => {
           </ListItem>
           <Collapse in={foldersState} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <CreateNewFolder />
+              <CreateNewFolder onCreate={saveNewFolder}/>
+              {
+                folders.map(name => 
+                  <ListItem button className={classes.nested} color="secondary">
+                    <ListItemText primary={name} />
+                  </ListItem>
+                )
+              }
             </List>
           </Collapse>
         </List>
@@ -107,5 +125,16 @@ const JottyIcon = (
     height="75rem"
   />
 );
+
+function areStrings(val: any): val is string[] {
+  return Array.isArray(val) && val.every(x => typeof x === 'string')
+}
+
+function getFolders(): string[] {
+  const savedFolders: string | null = localStorage.getItem('folders');
+  const parsedFolders: any = savedFolders && JSON.parse(savedFolders);
+
+  return areStrings(parsedFolders) ? parsedFolders : [];
+}
 
 export default Navbar;
