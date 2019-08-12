@@ -1,11 +1,19 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
-import { CardContent, Typography } from "@material-ui/core/";
-import { CardHeader, IconButton, Checkbox } from "@material-ui/core";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
+
+import {
+  CardContent,
+  Typography,
+  Card,
+  CardHeader,
+  IconButton,
+  Checkbox
+} from "@material-ui/core/";
+
 import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 import StarIcon from "@material-ui/icons/Star";
 import StarIconOutlined from "@material-ui/icons/StarOutlined";
-import { createStyles, makeStyles } from "@material-ui/core/styles";
 
 type Note = {
   title: string;
@@ -39,6 +47,9 @@ const Note = (props: Note) => {
               // onChange={handleChange('checkedA')}
               // value={state goes here}
             />
+            <IconButton aria-label="edit">
+              <EditIcon />
+            </IconButton>
             <IconButton aria-label="delete">
               <DeleteIcon />
             </IconButton>
