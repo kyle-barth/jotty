@@ -18,7 +18,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FolderIcon from "@material-ui/icons/Folder";
 
 import CreateNewFolder from "./dialogs/createNewFolder";
-import AccountSettings from "./dialogs/accountSetings";
+import AccountSettings from "./dialogs/accountSettings";
 
 const Navbar = () => {
   const classes = useStyles();
