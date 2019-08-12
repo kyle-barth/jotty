@@ -28,7 +28,7 @@ const CreateNewFolder = (props: { onCreate: Function }) => {
   }
 
   const handleClose = (folderName?: string) => {
-    if(folderName){
+    if (folderName) {
       props.onCreate(folderName)
     }
     setOpen(false);
@@ -53,14 +53,14 @@ const CreateNewFolder = (props: { onCreate: Function }) => {
 };
 
 function SimpleDialog(props: SimpleDialogProps) {
-  const folder = useTextField('')
+  const folder = useTextField('');
   const classes = useStyles();
   const { onClose, open } = props;
 
   function handleClose() {
     onClose();
   }
-  
+
   function handleSave() {
     onClose(folder.value);
   }
@@ -72,7 +72,7 @@ function SimpleDialog(props: SimpleDialogProps) {
       open={open}
     >
       <DialogTitle id="form-dialog-title">
-        <h3 className={classes.dialogTitle}>Create new folder</h3>
+        <p className={classes.dialogTitle}>Create new folder</p>
         <IconButton
           aria-label="close"
           className={classes.closeButton}
@@ -87,7 +87,7 @@ function SimpleDialog(props: SimpleDialogProps) {
           Group notes together by defining custom folders!
         </DialogContentText>
         <TextField
-          { ...folder }
+          {...folder}
           autoFocus
           margin="dense"
           id="name"
@@ -98,9 +98,7 @@ function SimpleDialog(props: SimpleDialogProps) {
 
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleSave} color="secondary">
-          Add folder
-        </Button>
+        <Button onClick={handleSave} color="secondary">Create Folder</Button>
       </DialogActions>
     </Dialog>
   );
@@ -132,7 +130,7 @@ function useTextField(initialValue: string) {
   const [value, setValue] = useState(initialValue);
   const onChange = (event: InputEvent) => setValue(event.target.value);
 
-  return { value, onChange }
+  return { value, onChange };
 }
 
 export default CreateNewFolder;
