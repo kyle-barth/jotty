@@ -14,15 +14,7 @@ import {
   PaletteType,
   Switch,
   FormControlLabel,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-  Divider,
-  Button,
-  Hidden,
-  Paper
+  Hidden
 } from "@material-ui/core";
 
 import DarkToggleIcon from "@material-ui/icons/Brightness4";
