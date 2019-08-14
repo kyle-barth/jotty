@@ -71,12 +71,13 @@ const App: React.FC = () => {
               <div style={{ maxWidth: "30rem" }}>
                 <NotesList />
               </div>
-
-              <Note
-                title="Example note title"
-                date="August 20th 2019"
-                body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda quisquam nihil, sunt ea perferendis placeat necessitatibus voluptas similique a, officia recusandae laboriosam itaque vel? Alias neque fugiat consectetur odio veritatis vel praesentium aliquid ratione soluta! Quam nobis expedita sint molestias."
-              />
+              <div>
+                <Note
+                  title="Example note title"
+                  date="August 20th 2019"
+                  body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda quisquam nihil, sunt ea perferendis placeat necessitatibus voluptas similique a, officia recusandae laboriosam itaque vel? Alias neque fugiat consectetur odio veritatis vel praesentium aliquid ratione soluta! Quam nobis expedita sint molestias."
+                />
+              </div>
             </Hidden>
           </div>
         </main>
