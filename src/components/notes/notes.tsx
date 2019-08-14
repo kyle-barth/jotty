@@ -8,10 +8,12 @@ import {
   ListItemText,
   Typography,
   Divider,
+  Paper,
   Button
 } from "@material-ui/core";
 
 import NoteAddIcon from "@material-ui/icons/NoteAddOutlined";
+import { maxWidth } from "@material-ui/system";
 
 const NotesList = () => {
   const classes = useStyles();
@@ -37,58 +39,49 @@ const NotesList = () => {
         />
       </ListItem>
 
-      <ListItem button>
+      <ListItem className={classes.onNoteHover} button>
         <ListItemText
-          primary={
-            <Typography variant="h6" noWrap>
-              Example note title
-            </Typography>
-          }
+          primary={<Typography variant="h6">Example note title</Typography>}
           secondary={
-            <Typography noWrap>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
-              molestiae vero veniam voluptatem architecto placeat dolore
-              similique expedita quam, mollitia quis reiciendis minus neque a
-              saepe facilis, provident, eum nobis.
-            </Typography>
+            <div className={classes.correctBottomMargin}>
+              <Typography className={classes.previewText}>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
+                molestiae vero veniam voluptatem architecto placeat dolore
+                similique expedita quam, mollitia quis reiciendis minus neque a
+                saepe facilis, provident, eum nobis. Lorem ipsum, dolor sit amet
+                consectetur adipisicing elit. Dolor molestiae vero veniam
+                voluptatem architecto placeat dolore similique expedita quam,
+                mollitia quis reiciendis minus neque a saepe facilis, provident,
+                eum nobis. Lorem ipsum, dolor sit amet consectetur adipisicing
+                elit. Dolor molestiae vero veniam voluptatem architecto placeat
+                dolore similique expedita quam, mollitia quis reiciendis minus
+                neque a saepe facilis, provident, eum nobis.
+              </Typography>
+              <div className={classes.fadeout} />
+            </div>
           }
         />
       </ListItem>
-
-      <Divider variant="middle" />
-      <ListItem button>
+      <ListItem className={classes.onNoteHover} button>
         <ListItemText
-          primary={
-            <Typography variant="h6" noWrap>
-              Example note title
-            </Typography>
-          }
+          primary={<Typography variant="h6">Example note title</Typography>}
           secondary={
-            <Typography noWrap>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
-              molestiae vero veniam voluptatem architecto placeat dolore
-              similique expedita quam, mollitia quis reiciendis minus neque a
-              saepe facilis, provident, eum nobis.
-            </Typography>
-          }
-        />
-      </ListItem>
-
-      <Divider variant="middle" />
-      <ListItem button>
-        <ListItemText
-          primary={
-            <Typography variant="h6" noWrap>
-              Example note title
-            </Typography>
-          }
-          secondary={
-            <Typography noWrap>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
-              molestiae vero veniam voluptatem architecto placeat dolore
-              similique expedita quam, mollitia quis reiciendis minus neque a
-              saepe facilis, provident, eum nobis.
-            </Typography>
+            <div className={classes.correctBottomMargin}>
+              <Typography className={classes.previewText}>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
+                molestiae vero veniam voluptatem architecto placeat dolore
+                similique expedita quam, mollitia quis reiciendis minus neque a
+                saepe facilis, provident, eum nobis. Lorem ipsum, dolor sit amet
+                consectetur adipisicing elit. Dolor molestiae vero veniam
+                voluptatem architecto placeat dolore similique expedita quam,
+                mollitia quis reiciendis minus neque a saepe facilis, provident,
+                eum nobis. Lorem ipsum, dolor sit amet consectetur adipisicing
+                elit. Dolor molestiae vero veniam voluptatem architecto placeat
+                dolore similique expedita quam, mollitia quis reiciendis minus
+                neque a saepe facilis, provident, eum nobis.
+              </Typography>
+              <div className={classes.fadeout} />
+            </div>
           }
         />
       </ListItem>
@@ -96,16 +89,11 @@ const NotesList = () => {
   );
 };
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: "flex"
-    },
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing(3)
-    },
-    toolbar: theme.mixins.toolbar,
+const useStyles = makeStyles((theme: Theme) => {
+  const noteHeight = theme.typography.fontSize * 5;
+  const fadeColour = theme.palette.background.default;
+
+  return createStyles({
     listTitle: {
       fontWeight: "bold"
     },
@@ -118,15 +106,33 @@ const useStyles = makeStyles((theme: Theme) =>
     spacer: {
       margin: "auto"
     },
-    container: {
-      display: "flex"
+    previewText: {
+      overflow: "hidden",
+      height: noteHeight
     },
-    paper: {
-      padding: theme.spacing(2),
-      flex: "1 0 auto",
-      margin: theme.spacing(1)
+    fadeout: {
+      position: "relative",
+      bottom: noteHeight,
+      height: noteHeight,
+      background: `-webkit-linear-gradient(
+          rgba(255, 255, 255, 0) 0%,
+          ${fadeColour} 100%
+      )`,
+      marginBottom: -noteHeight
+    },
+    correctBottomMargin: {
+      marginBottom: -noteHeight,
+      display: "inline-block"
+    },
+    onNoteHover: {
+      "&:hover .makeStyles-fadeout-247": {
+        background: `-webkit-linear-gradient(
+          rgba(255, 255, 255, 0) 0%,
+          ${theme.palette.common.white} 100%
+      )`
+      }
     }
-  })
-);
+  });
+});
 
 export default NotesList;
