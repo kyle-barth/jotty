@@ -198,7 +198,6 @@ const useStyles = makeStyles((theme: Theme) =>
         display: "none"
       }
     },
-    toolbar: theme.mixins.toolbar,
     search: {
       position: "relative",
       borderRadius: theme.shape.borderRadius,
