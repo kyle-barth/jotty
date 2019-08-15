@@ -1,39 +1,39 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
 
 import {
   createStyles,
   Theme,
   makeStyles,
-  createMuiTheme
-} from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
+  createMuiTheme,
+} from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import {
   PaletteType,
   Switch,
   FormControlLabel,
-  Hidden
-} from "@material-ui/core";
+  Hidden,
+} from '@material-ui/core';
 
-import DarkToggleIcon from "@material-ui/icons/Brightness4";
+import DarkToggleIcon from '@material-ui/icons/Brightness4';
 
-import Navbar from "./components/navbar/navbar";
-import Note from "./components/notes/note";
-import NotesList from "./components/notes/notes";
+import Navbar from './components/navbar/navbar';
+import Note from './components/notes/note';
+import NotesList from './components/notes/notes';
 
 const App: React.FC = () => {
-  const [themeState, setThemeState] = React.useState<PaletteType>("dark");
+  const [themeState, setThemeState] = React.useState<PaletteType>('dark');
 
   const theme: Theme = createMuiTheme({
     palette: {
-      type: themeState
-    }
+      type: themeState,
+    },
   });
 
   function handleThemeChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setThemeState(event.target.checked ? "dark" : "light");
+    setThemeState(event.target.checked ? 'dark' : 'light');
   }
 
   const classes = useStyles(theme);
@@ -47,12 +47,12 @@ const App: React.FC = () => {
           <div className={classes.toolbar} />
           <div className={classes.container}>
             <FormControlLabel
-              style={{ float: "right" }}
+              style={{ float: 'right' }}
               control={
                 <Switch
                   defaultChecked
                   onChange={handleThemeChange}
-                  inputProps={{ "aria-label": "toggle user palette" }}
+                  inputProps={{ 'aria-label': 'toggle user palette' }}
                 />
               }
               label={<DarkToggleIcon />}
@@ -61,14 +61,14 @@ const App: React.FC = () => {
           </div>
 
           <div className={classes.container}>
-            <Hidden only={["lg", "xl"]}>
+            <Hidden only={['lg', 'xl']}>
               <div>
                 <NotesList />
               </div>
             </Hidden>
 
             <Hidden mdDown>
-              <div style={{ width: "50%", minWidth: "30rem" }}>
+              <div style={{ width: '50%', minWidth: '30rem' }}>
                 <NotesList />
               </div>
               <div>
@@ -89,29 +89,29 @@ const App: React.FC = () => {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: "flex"
+      display: 'flex',
     },
     content: {
       flexGrow: 1,
-      padding: theme.spacing(3)
+      padding: theme.spacing(3),
     },
     toolbar: theme.mixins.toolbar,
     listTitle: {
-      fontWeight: "bold"
+      fontWeight: 'bold',
     },
     button: {
-      margin: theme.spacing(1)
+      margin: theme.spacing(1),
     },
     rightIcon: {
-      marginLeft: theme.spacing(1)
+      marginLeft: theme.spacing(1),
     },
     spacer: {
-      margin: "auto"
+      margin: 'auto',
     },
     container: {
-      display: "flex"
-    }
-  })
+      display: 'flex',
+    },
+  }),
 );
 
 export default App;
