@@ -14,20 +14,14 @@ import {
   PaletteType,
   Switch,
   FormControlLabel,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-  Divider,
-  Button
+  Hidden
 } from "@material-ui/core";
 
 import DarkToggleIcon from "@material-ui/icons/Brightness4";
-import NoteAddIcon from "@material-ui/icons/NoteAddOutlined";
 
 import Navbar from "./components/navbar/navbar";
 import Note from "./components/notes/note";
+import NotesList from "./components/notes/notes";
 
 const App: React.FC = () => {
   const [themeState, setThemeState] = React.useState<PaletteType>("dark");
@@ -50,110 +44,42 @@ const App: React.FC = () => {
       <div className={classes.root}>
         <Navbar />
         <main className={classes.content}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <FormControlLabel
-                style={{ float: "right" }}
-                control={
-                  <Switch
-                    defaultChecked
-                    onChange={handleThemeChange}
-                    inputProps={{ "aria-label": "toggle user palette" }}
-                  />
-                }
-                label={<DarkToggleIcon />}
-                labelPlacement="start"
-              />
-            </Grid>
-            <Grid item xs={6} sm={6}>
-              <List>
-                <ListItem>
-                  <ListItemText
-                    primary={
-                      <div style={{ display: "flex" }}>
-                        <Typography variant="h4" className={classes.listTitle}>
-                          All Notes:
-                        </Typography>
+          <div className={classes.toolbar} />
+          <div className={classes.container}>
+            <FormControlLabel
+              style={{ float: "right" }}
+              control={
+                <Switch
+                  defaultChecked
+                  onChange={handleThemeChange}
+                  inputProps={{ "aria-label": "toggle user palette" }}
+                />
+              }
+              label={<DarkToggleIcon />}
+              labelPlacement="start"
+            />
+          </div>
 
-                        <span className={classes.spacer} />
+          <div className={classes.container}>
+            <Hidden only={["lg", "xl"]}>
+              <div>
+                <NotesList />
+              </div>
+            </Hidden>
 
-                        <Button color="default" className={classes.button}>
-                          Add Note
-                          <NoteAddIcon className={classes.rightIcon} />
-                        </Button>
-                      </div>
-                    }
-                  />
-                </ListItem>
-
-                <ListItem button>
-                  <ListItemText
-                    primary={
-                      <Typography variant="h6" noWrap>
-                        Example note title
-                      </Typography>
-                    }
-                    secondary={
-                      <Typography noWrap>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Dolor molestiae vero veniam voluptatem architecto
-                        placeat dolore similique expedita quam, mollitia quis
-                        reiciendis minus neque a saepe facilis, provident, eum
-                        nobis.
-                      </Typography>
-                    }
-                  />
-                </ListItem>
-
-                <Divider variant="middle" />
-                <ListItem button>
-                  <ListItemText
-                    primary={
-                      <Typography variant="h6" noWrap>
-                        Example note title
-                      </Typography>
-                    }
-                    secondary={
-                      <Typography noWrap>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Dolor molestiae vero veniam voluptatem architecto
-                        placeat dolore similique expedita quam, mollitia quis
-                        reiciendis minus neque a saepe facilis, provident, eum
-                        nobis.
-                      </Typography>
-                    }
-                  />
-                </ListItem>
-
-                <Divider variant="middle" />
-                <ListItem button>
-                  <ListItemText
-                    primary={
-                      <Typography variant="h6" noWrap>
-                        Example note title
-                      </Typography>
-                    }
-                    secondary={
-                      <Typography noWrap>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Dolor molestiae vero veniam voluptatem architecto
-                        placeat dolore similique expedita quam, mollitia quis
-                        reiciendis minus neque a saepe facilis, provident, eum
-                        nobis.
-                      </Typography>
-                    }
-                  />
-                </ListItem>
-              </List>
-            </Grid>
-            <Grid item xs={6} sm={6}>
-              <Note
-                title="Example note title"
-                date="August 20th 2019"
-                body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda quisquam nihil, sunt ea perferendis placeat necessitatibus voluptas similique a, officia recusandae laboriosam itaque vel? Alias neque fugiat consectetur odio veritatis vel praesentium aliquid ratione soluta! Quam nobis expedita sint molestias."
-              />
-            </Grid>
-          </Grid>
+            <Hidden mdDown>
+              <div style={{ maxWidth: "30rem" }}>
+                <NotesList />
+              </div>
+              <div>
+                <Note
+                  title="Example note title"
+                  date="August 20th 2019"
+                  body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda quisquam nihil, sunt ea perferendis placeat necessitatibus voluptas similique a, officia recusandae laboriosam itaque vel? Alias neque fugiat consectetur odio veritatis vel praesentium aliquid ratione soluta! Quam nobis expedita sint molestias."
+                />
+              </div>
+            </Hidden>
+          </div>
         </main>
       </div>
     </ThemeProvider>
@@ -169,6 +95,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       padding: theme.spacing(3)
     },
+    toolbar: theme.mixins.toolbar,
     listTitle: {
       fontWeight: "bold"
     },
@@ -180,6 +107,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     spacer: {
       margin: "auto"
+    },
+    container: {
+      display: "flex"
     }
   })
 );

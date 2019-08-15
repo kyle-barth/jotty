@@ -31,8 +31,8 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FolderIcon from "@material-ui/icons/Folder";
 
-import CreateNewFolder from "./dialogs/createNewFolder";
-import AccountSettings from "./dialogs/accountSettings";
+import CreateNewFolder from "components/navbar/dialogs/create-new-folder";
+import AccountSettings from "components/navbar/dialogs/account-settings";
 import useSharedState from "shared/use-shared-state";
 import { foldersSubject } from "shared/global-store";
 
@@ -188,7 +188,6 @@ const useStyles = makeStyles((theme: Theme) =>
         display: "none"
       }
     },
-    toolbar: theme.mixins.toolbar,
     search: {
       position: "relative",
       borderRadius: theme.shape.borderRadius,
