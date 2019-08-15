@@ -1,10 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# **Jotty**
+
+## **Jotty is a fully featured note taking app made primarily with React, rxjs & Material UI.**
+
+## The main areas I set out to explore in this project include:
+
+1. Functional React using hooks.
+1. The current state of React + TypeScript.
+1. State Management using hooks with rxjs [(React Hooks + RxJS or How React Is Meant to Be)](https://blog.soshace.com/en/javascript/react-hooks-rxjs-or-how-react-is-meant-to-be/).
+1. Responsive Web Design using Material UI (in React).
+1. Theming Material UI.
+1. High Level Blackbox Testing for ensuring correct system behaviour rather than testing implementation [(Ian Cooper - Where TDD Went Wrong)](https://www.youtube.com/watch?v=EZ05e7EMOLM).
+1. Project setup for CI/CD in GitHub.
+1. Code consistency accross a project using Prettier / Husky / ESLint [(Using ESLint and Prettier in a TypeScript Project)](https://dev.to/robertcoopercode/using-eslint-and-prettier-in-a-typescript-project-53jb).
+
+---
+
+### **Details on how to run the project locally ->**
+
+Jotty is a note taking SPA bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -12,12 +31,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `yarn run build`
 
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -27,7 +46,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### `yarn run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
