@@ -31,35 +31,25 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FolderIcon from "@material-ui/icons/Folder";
 
-import CreateNewFolder from "./dialogs/create-new-folder";
-import AccountSettings from "./dialogs/account-settings";
+import CreateNewFolder from "components/navbar/dialogs/create-new-folder";
+import AccountSettings from "components/navbar/dialogs/account-settings";
+import useSharedState from "shared/use-shared-state";
+import { foldersSubject } from "shared/global-store";
 
 const Navbar = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const [folders] = useSharedState(foldersSubject);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [foldersState, setFoldersOpen] = React.useState(true);
 
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
   }
 
-  const [foldersState, setFoldersOpen] = React.useState(true);
-  const [folders, setFolders] = React.useState<string[]>([]);
-
   function handleCustomFolderToggle() {
     setFoldersOpen(!foldersState);
   }
-
-  const saveNewFolder = (folderName: string) => {
-    const newFolders: string[] = [...getFolders(), folderName];
-
-    localStorage.setItem("folders", JSON.stringify(newFolders));
-    setFolders(newFolders);
-  };
-
-  React.useEffect(() => {
-    setFolders(getFolders());
-  }, []);
 
   const drawer = (
     <div>
@@ -95,8 +85,8 @@ const Navbar = () => {
         </ListItem>
         <Collapse in={foldersState} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <CreateNewFolder onCreate={saveNewFolder} />
-            {folders.map((name) => (
+            <CreateNewFolder />
+            {folders.map(name => (
               <ListItem button key={name} color="secondary">
                 <ListItemText primary={name} />
               </ListItem>
@@ -243,16 +233,5 @@ const JottyIcon = (
     height="75rem"
   />
 );
-
-function areStrings(val: any): val is string[] {
-  return Array.isArray(val) && val.every(x => typeof x === "string");
-}
-
-function getFolders(): string[] {
-  const savedFolders: string | null = localStorage.getItem("folders");
-  const parsedFolders: any = savedFolders && JSON.parse(savedFolders);
-
-  return areStrings(parsedFolders) ? parsedFolders : [];
-}
 
 export default Navbar;
