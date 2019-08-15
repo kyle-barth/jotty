@@ -19,13 +19,13 @@
 >
 > ### **Desktop**
 >
-> ![alt jotty desktop](./pictures/jotty-desktop.png)
+> ![alt jotty desktop](https://github.com/kyle-barth/jotty/blob/master/pictures/jotty-desktop.PNG)
 >
 > ### **Mobile**
 >
-> |                    Menu Closed                    |                          Menu Open                          |
-> | :-----------------------------------------------: | :---------------------------------------------------------: |
-> | ![alt jotty desktop](./pictures/jotty-mobile.png) | ![alt jotty desktop](./pictures/jotty-mobile-menu-open.png) |
+> |                                           Menu Closed                                           |                                                 Menu Open                                                 |
+> | :---------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------: |
+> | ![alt jotty desktop](https://github.com/kyle-barth/jotty/blob/master/pictures/jotty-mobile.PNG) | ![alt jotty desktop](https://github.com/kyle-barth/jotty/blob/master/pictures/jotty-mobile-menu-open.PNG) |
 
 ---
 
