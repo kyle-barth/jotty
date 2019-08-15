@@ -8,12 +8,10 @@ import {
   ListItemText,
   Typography,
   Divider,
-  Paper,
   Button
 } from "@material-ui/core";
 
 import NoteAddIcon from "@material-ui/icons/NoteAddOutlined";
-import { maxWidth } from "@material-ui/system";
 
 const NotesList = () => {
   const classes = useStyles();
@@ -59,6 +57,7 @@ const NotesList = () => {
           }
         />
       </ListItem>
+      <Divider variant="middle" />
       <ListItem button>
         <ListItemText
           primary={<Typography variant="h6">Example note title</Typography>}
@@ -79,6 +78,7 @@ const NotesList = () => {
           }
         />
       </ListItem>
+      <Divider variant="middle" />
       <ListItem button>
         <ListItemText
           primary={<Typography variant="h6">Example note title</Typography>}
