@@ -2,7 +2,7 @@
 
 ## **Jotty is a fully featured note taking app made primarily with React, rxjs & Material UI.**
 
-## The main areas I set out to explore in this project include:
+### The main areas I set out to explore in this project include:
 
 1. Functional React using hooks.
 1. The current state of React + TypeScript.
@@ -15,7 +15,21 @@
 
 ---
 
-### **Details on how to run the project locally ->**
+> ## **Pictures (App still in development)**
+>
+> ### **Desktop**
+>
+> ![alt jotty desktop](./pictures/jotty-desktop.png)
+>
+> ### **Mobile**
+>
+> |                    Menu Closed                    |                          Menu Open                          |
+> | :-----------------------------------------------: | :---------------------------------------------------------: |
+> | ![alt jotty desktop](./pictures/jotty-mobile.png) | ![alt jotty desktop](./pictures/jotty-mobile-menu-open.png) |
+
+---
+
+## **How to run the project locally ->**
 
 Jotty is a note taking SPA bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
