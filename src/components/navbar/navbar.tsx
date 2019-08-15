@@ -31,8 +31,8 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FolderIcon from "@material-ui/icons/Folder";
 
-import CreateNewFolder from "components/navbar/dialogs/create-new-folder";
-import AccountSettings from "components/navbar/dialogs/account-settings";
+import CreateNewFolder from "components/dialogs/create-new-folder";
+import AccountSettings from "components/dialogs/account-settings";
 import useSharedState from "shared/use-shared-state";
 import { foldersSubject } from "shared/global-store";
 
