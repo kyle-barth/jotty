@@ -39,49 +39,63 @@ const NotesList = () => {
         />
       </ListItem>
 
-      <ListItem className={classes.onNoteHover} button>
+      <ListItem button>
         <ListItemText
           primary={<Typography variant="h6">Example note title</Typography>}
           secondary={
-            <div className={classes.correctBottomMargin}>
-              <Typography className={classes.previewText}>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
-                molestiae vero veniam voluptatem architecto placeat dolore
-                similique expedita quam, mollitia quis reiciendis minus neque a
-                saepe facilis, provident, eum nobis. Lorem ipsum, dolor sit amet
-                consectetur adipisicing elit. Dolor molestiae vero veniam
-                voluptatem architecto placeat dolore similique expedita quam,
-                mollitia quis reiciendis minus neque a saepe facilis, provident,
-                eum nobis. Lorem ipsum, dolor sit amet consectetur adipisicing
-                elit. Dolor molestiae vero veniam voluptatem architecto placeat
-                dolore similique expedita quam, mollitia quis reiciendis minus
-                neque a saepe facilis, provident, eum nobis.
-              </Typography>
-              <div className={classes.fadeout} />
-            </div>
+            <Typography className={classes.previewText}>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
+              molestiae vero veniam voluptatem architecto placeat dolore
+              similique expedita quam, mollitia quis reiciendis minus neque a
+              saepe facilis, provident, eum nobis. Lorem ipsum, dolor sit amet
+              consectetur adipisicing elit. Dolor molestiae vero veniam
+              voluptatem architecto placeat dolore similique expedita quam,
+              mollitia quis reiciendis minus neque a saepe facilis, provident,
+              eum nobis. Lorem ipsum, dolor sit amet consectetur adipisicing
+              elit. Dolor molestiae vero veniam voluptatem architecto placeat
+              dolore similique expedita quam, mollitia quis reiciendis minus
+              neque a saepe facilis, provident, eum nobis.
+            </Typography>
           }
         />
       </ListItem>
-      <ListItem className={classes.onNoteHover} button>
+      <ListItem button>
         <ListItemText
           primary={<Typography variant="h6">Example note title</Typography>}
           secondary={
-            <div className={classes.correctBottomMargin}>
-              <Typography className={classes.previewText}>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
-                molestiae vero veniam voluptatem architecto placeat dolore
-                similique expedita quam, mollitia quis reiciendis minus neque a
-                saepe facilis, provident, eum nobis. Lorem ipsum, dolor sit amet
-                consectetur adipisicing elit. Dolor molestiae vero veniam
-                voluptatem architecto placeat dolore similique expedita quam,
-                mollitia quis reiciendis minus neque a saepe facilis, provident,
-                eum nobis. Lorem ipsum, dolor sit amet consectetur adipisicing
-                elit. Dolor molestiae vero veniam voluptatem architecto placeat
-                dolore similique expedita quam, mollitia quis reiciendis minus
-                neque a saepe facilis, provident, eum nobis.
-              </Typography>
-              <div className={classes.fadeout} />
-            </div>
+            <Typography className={classes.previewText}>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
+              molestiae vero veniam voluptatem architecto placeat dolore
+              similique expedita quam, mollitia quis reiciendis minus neque a
+              saepe facilis, provident, eum nobis. Lorem ipsum, dolor sit amet
+              consectetur adipisicing elit. Dolor molestiae vero veniam
+              voluptatem architecto placeat dolore similique expedita quam,
+              mollitia quis reiciendis minus neque a saepe facilis, provident,
+              eum nobis. Lorem ipsum, dolor sit amet consectetur adipisicing
+              elit. Dolor molestiae vero veniam voluptatem architecto placeat
+              dolore similique expedita quam, mollitia quis reiciendis minus
+              neque a saepe facilis, provident, eum nobis.
+            </Typography>
+          }
+        />
+      </ListItem>
+      <ListItem button>
+        <ListItemText
+          primary={<Typography variant="h6">Example note title</Typography>}
+          secondary={
+            <Typography className={classes.previewText}>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
+              molestiae vero veniam voluptatem architecto placeat dolore
+              similique expedita quam, mollitia quis reiciendis minus neque a
+              saepe facilis, provident, eum nobis. Lorem ipsum, dolor sit amet
+              consectetur adipisicing elit. Dolor molestiae vero veniam
+              voluptatem architecto placeat dolore similique expedita quam,
+              mollitia quis reiciendis minus neque a saepe facilis, provident,
+              eum nobis. Lorem ipsum, dolor sit amet consectetur adipisicing
+              elit. Dolor molestiae vero veniam voluptatem architecto placeat
+              dolore similique expedita quam, mollitia quis reiciendis minus
+              neque a saepe facilis, provident, eum nobis.
+            </Typography>
           }
         />
       </ListItem>
@@ -90,9 +104,6 @@ const NotesList = () => {
 };
 
 const useStyles = makeStyles((theme: Theme) => {
-  const noteHeight = theme.typography.fontSize * 5;
-  const fadeColour = theme.palette.background.default;
-
   return createStyles({
     listTitle: {
       fontWeight: "bold"
@@ -108,29 +119,12 @@ const useStyles = makeStyles((theme: Theme) => {
     },
     previewText: {
       overflow: "hidden",
-      height: noteHeight
-    },
-    fadeout: {
-      position: "relative",
-      bottom: noteHeight,
-      height: noteHeight,
-      background: `-webkit-linear-gradient(
-          rgba(255, 255, 255, 0) 0%,
-          ${fadeColour} 100%
-      )`,
-      marginBottom: -noteHeight
-    },
-    correctBottomMargin: {
-      marginBottom: -noteHeight,
-      display: "inline-block"
-    },
-    onNoteHover: {
-      "&:hover .makeStyles-fadeout-247": {
-        background: `-webkit-linear-gradient(
-          rgba(255, 255, 255, 0) 0%,
-          ${theme.palette.common.white} 100%
-      )`
-      }
+      height: "5rem",
+      background: `linear-gradient(${
+        theme.palette.text.secondary
+      }, rgba(0,0,0,0))`,
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent"
     }
   });
 });
