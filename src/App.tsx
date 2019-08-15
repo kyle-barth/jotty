@@ -68,7 +68,7 @@ const App: React.FC = () => {
             </Hidden>
 
             <Hidden mdDown>
-              <div style={{ maxWidth: "30rem" }}>
+              <div style={{ width: "50%", minWidth: "30rem" }}>
                 <NotesList />
               </div>
               <div>
