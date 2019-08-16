@@ -1,12 +1,12 @@
-import { areStrings } from "shared/type-guards";
+import { areStrings } from 'shared/type-guards';
 
 enum localStorageKeys {
-  folders = "folders"
+  folders = 'folders',
 }
 
 export function getFolders(): string[] {
   const savedFolders: string | null = localStorage.getItem(
-    localStorageKeys.folders
+    localStorageKeys.folders,
   );
   const parsedFolders: any = savedFolders && JSON.parse(savedFolders);
 

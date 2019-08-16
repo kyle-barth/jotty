@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 
 import {
   List,
@@ -8,10 +8,10 @@ import {
   ListItemText,
   Typography,
   Divider,
-  Button
-} from "@material-ui/core";
+  Button,
+} from '@material-ui/core';
 
-import NoteAddIcon from "@material-ui/icons/NoteAddOutlined";
+import NoteAddIcon from '@material-ui/icons/NoteAddOutlined';
 
 const NotesList = () => {
   const classes = useStyles();
@@ -21,7 +21,7 @@ const NotesList = () => {
       <ListItem>
         <ListItemText
           primary={
-            <div style={{ display: "flex" }}>
+            <div style={{ display: 'flex' }}>
               <Typography variant="h4" className={classes.listTitle}>
                 All Notes:
               </Typography>
@@ -106,26 +106,24 @@ const NotesList = () => {
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
     listTitle: {
-      fontWeight: "bold"
+      fontWeight: 'bold',
     },
     button: {
-      margin: theme.spacing(1)
+      margin: theme.spacing(1),
     },
     rightIcon: {
-      marginLeft: theme.spacing(1)
+      marginLeft: theme.spacing(1),
     },
     spacer: {
-      margin: "auto"
+      margin: 'auto',
     },
     previewText: {
-      overflow: "hidden",
-      height: "5rem",
-      background: `linear-gradient(${
-        theme.palette.text.secondary
-      }, rgba(0,0,0,0))`,
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent"
-    }
+      overflow: 'hidden',
+      height: '5rem',
+      background: `linear-gradient(${theme.palette.text.secondary}, rgba(0,0,0,0))`,
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+    },
   });
 });
 

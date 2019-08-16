@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { BehaviorSubject, Subscription } from "rxjs";
-import { skip } from "rxjs/operators";
+import { useState, useEffect } from 'react';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { skip } from 'rxjs/operators';
 
 type stateUtils<T> = [T, (value: T) => void];
 

@@ -1,5 +1,5 @@
-import React from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import React from 'react';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 import {
   IconButton,
@@ -9,11 +9,11 @@ import {
   DialogTitle,
   DialogContent,
   DialogContentText,
-  DialogActions
-} from "@material-ui/core";
+  DialogActions,
+} from '@material-ui/core';
 
-import AccountIcon from "@material-ui/icons/AccountCircle";
-import CloseIcon from "@material-ui/icons/Close";
+import AccountIcon from '@material-ui/icons/AccountCircle';
+import CloseIcon from '@material-ui/icons/Close';
 
 const AccountSettings = () => {
   const [open, setOpen] = React.useState(false);
@@ -28,7 +28,7 @@ const AccountSettings = () => {
   return (
     <div>
       <IconButton onClick={handleClickOpen} aria-label="user account">
-        <AccountIcon style={{ color: "white" }} />
+        <AccountIcon style={{ color: 'white' }} />
       </IconButton>
       <SimpleDialog open={open} onClose={handleClose} />
     </div>
@@ -75,7 +75,9 @@ function SimpleDialog(props: SimpleDialogProps) {
 
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleClose} color="secondary">Add Folder</Button>
+        <Button onClick={handleClose} color="secondary">
+          Add Folder
+        </Button>
       </DialogActions>
     </Dialog>
   );
@@ -84,17 +86,17 @@ function SimpleDialog(props: SimpleDialogProps) {
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
     nested: {
-      paddingLeft: theme.spacing(4)
+      paddingLeft: theme.spacing(4),
     },
     closeButton: {
-      position: "absolute",
+      position: 'absolute',
       right: theme.spacing(1),
-      top: theme.spacing(1)
+      top: theme.spacing(1),
     },
     dialogTitle: {
       marginBlockStart: 0,
-      marginBlockEnd: 0
-    }
+      marginBlockEnd: 0,
+    },
   });
 });
 

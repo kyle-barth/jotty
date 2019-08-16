@@ -1,7 +1,7 @@
-import { BehaviorSubject } from "rxjs";
-import { skip } from "rxjs/operators";
+import { BehaviorSubject } from 'rxjs';
+import { skip } from 'rxjs/operators';
 
-import { getFolders, setFolders } from "shared/local-storage";
+import { getFolders, setFolders } from 'shared/local-storage';
 
 export const foldersSubject = new BehaviorSubject<string[]>(getFolders());
 foldersSubject

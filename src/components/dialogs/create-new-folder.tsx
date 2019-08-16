@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import React, { useState } from 'react';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import {
   IconButton,
   ListItem,
@@ -11,13 +11,13 @@ import {
   DialogTitle,
   DialogContent,
   DialogContentText,
-  DialogActions
-} from "@material-ui/core";
-import CreateFolderIcon from "@material-ui/icons/CreateNewFolderOutlined";
-import CloseIcon from "@material-ui/icons/Close";
+  DialogActions,
+} from '@material-ui/core';
+import CreateFolderIcon from '@material-ui/icons/CreateNewFolderOutlined';
+import CloseIcon from '@material-ui/icons/Close';
 
-import useSharedState from "shared/use-shared-state";
-import { foldersSubject } from "shared/global-store";
+import useSharedState from 'shared/use-shared-state';
+import { foldersSubject } from 'shared/global-store';
 
 type InputEvent = React.ChangeEvent<HTMLInputElement>;
 
@@ -102,7 +102,9 @@ function SimpleDialog(props: SimpleDialogProps) {
 
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleSave} color="secondary">Create Folder</Button>
+        <Button onClick={handleSave} color="secondary">
+          Create Folder
+        </Button>
       </DialogActions>
     </Dialog>
   );
@@ -111,17 +113,17 @@ function SimpleDialog(props: SimpleDialogProps) {
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
     nested: {
-      paddingLeft: theme.spacing(4)
+      paddingLeft: theme.spacing(4),
     },
     closeButton: {
-      position: "absolute",
+      position: 'absolute',
       right: theme.spacing(1),
-      top: theme.spacing(1)
+      top: theme.spacing(1),
     },
     dialogTitle: {
       marginBlockStart: 0,
-      marginBlockEnd: 0
-    }
+      marginBlockEnd: 0,
+    },
   });
 });
 

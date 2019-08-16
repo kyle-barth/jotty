@@ -1,5 +1,5 @@
-import React from "react";
-import { createStyles, makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 
 import {
   CardContent,
@@ -7,13 +7,13 @@ import {
   Card,
   CardHeader,
   IconButton,
-  Checkbox
-} from "@material-ui/core/";
+  Checkbox,
+} from '@material-ui/core/';
 
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
-import StarIcon from "@material-ui/icons/Star";
-import StarIconOutlined from "@material-ui/icons/StarOutlined";
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import StarIcon from '@material-ui/icons/Star';
+import StarIconOutlined from '@material-ui/icons/StarOutlined';
 
 type Note = {
   title: string;
@@ -24,7 +24,7 @@ type Note = {
 const Note = (props: Note) => {
   const classes = useStyles({});
 
-  const date = "Jotted down on " + props.date;
+  const date = 'Jotted down on ' + props.date;
 
   return (
     <Card>
@@ -64,9 +64,9 @@ const Note = (props: Note) => {
 const useStyles = makeStyles(() =>
   createStyles({
     noteTitle: {
-      fontWeight: "bold"
-    }
-  })
+      fontWeight: 'bold',
+    },
+  }),
 );
 
 export default Note;
