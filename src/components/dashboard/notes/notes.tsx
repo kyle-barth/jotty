@@ -37,7 +37,7 @@ const NotesList = () => {
         />
       </ListItem>
 
-      <ListItem button>
+      <ListItem button className={classes.roundedButton}>
         <ListItemText
           primary={<Typography variant="h6">Example note title</Typography>}
           secondary={
@@ -58,7 +58,7 @@ const NotesList = () => {
         />
       </ListItem>
       <Divider variant="middle" />
-      <ListItem button>
+      <ListItem button className={classes.roundedButton}>
         <ListItemText
           primary={<Typography variant="h6">Example note title</Typography>}
           secondary={
@@ -79,7 +79,7 @@ const NotesList = () => {
         />
       </ListItem>
       <Divider variant="middle" />
-      <ListItem button>
+      <ListItem button className={classes.roundedButton}>
         <ListItemText
           primary={<Typography variant="h6">Example note title</Typography>}
           secondary={
@@ -123,6 +123,10 @@ const useStyles = makeStyles((theme: Theme) => {
       background: `linear-gradient(${theme.palette.text.secondary}, rgba(0,0,0,0))`,
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
+    },
+    roundedButton: {
+      borderRadius: '.2rem',
+      margin: theme.spacing(1),
     },
   });
 });

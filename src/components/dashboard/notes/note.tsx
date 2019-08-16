@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 import {
   CardContent,
@@ -22,8 +22,7 @@ type Note = {
 };
 
 const Note = (props: Note) => {
-  const classes = useStyles({});
-
+  const classes = useStyles();
   const date = 'Jotted down on ' + props.date;
 
   return (
@@ -36,10 +35,10 @@ const Note = (props: Note) => {
         }
         subheader={date}
         action={
-          <div>
+          <div className={classes.actions}>
             <Checkbox
-              icon={<StarIconOutlined />}
-              checkedIcon={<StarIcon />}
+              icon={<StarIconOutlined className={classes.colourFade} />}
+              checkedIcon={<StarIcon className={classes.colourFade} />}
               color="primary"
               // inputProps={{
               //   'aria-label': 'secondary checkbox',
@@ -48,10 +47,10 @@ const Note = (props: Note) => {
               // value={state goes here}
             />
             <IconButton aria-label="edit">
-              <EditIcon />
+              <EditIcon className={classes.colourFade} />
             </IconButton>
             <IconButton aria-label="delete">
-              <DeleteIcon />
+              <DeleteIcon className={classes.colourFade} />
             </IconButton>
           </div>
         }
@@ -61,12 +60,19 @@ const Note = (props: Note) => {
   );
 };
 
-const useStyles = makeStyles(() =>
-  createStyles({
+const useStyles = makeStyles((theme: Theme) => {
+  return createStyles({
     noteTitle: {
       fontWeight: 'bold',
     },
-  }),
-);
+    actions: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    colourFade: {
+      color: theme.palette.text.secondary,
+    },
+  });
+});
 
 export default Note;

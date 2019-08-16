@@ -10,18 +10,12 @@ import {
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import {
-  PaletteType,
-  Switch,
-  FormControlLabel,
-  Hidden,
-} from '@material-ui/core';
+import { PaletteType, Switch, FormControlLabel } from '@material-ui/core';
 
 import DarkToggleIcon from '@material-ui/icons/Brightness4';
 
 import Navbar from './components/navbar/navbar';
-import Note from './components/notes/note';
-import NotesList from './components/notes/notes';
+import Dashboard from './components/dashboard/dashboard';
 
 const App: React.FC = () => {
   const [themeState, setThemeState] = React.useState<PaletteType>('dark');
@@ -61,24 +55,7 @@ const App: React.FC = () => {
           </div>
 
           <div className={classes.container}>
-            <Hidden smUp>
-              <div>
-                <NotesList />
-              </div>
-            </Hidden>
-
-            <Hidden xsDown>
-              <div style={{ width: '50%', minWidth: '20rem' }}>
-                <NotesList />
-              </div>
-              <div>
-                <Note
-                  title="Example note title"
-                  date="August 20th 2019"
-                  body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda quisquam nihil, sunt ea perferendis placeat necessitatibus voluptas similique a, officia recusandae laboriosam itaque vel? Alias neque fugiat consectetur odio veritatis vel praesentium aliquid ratione soluta! Quam nobis expedita sint molestias."
-                />
-              </div>
-            </Hidden>
+            <Dashboard />
           </div>
         </main>
       </div>
