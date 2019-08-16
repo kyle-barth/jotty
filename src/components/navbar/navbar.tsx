@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 import {
   fade,
   makeStyles,
   useTheme,
   Theme,
-  createStyles
-} from "@material-ui/core/styles";
+  createStyles,
+} from '@material-ui/core/styles';
 
 import {
   Divider,
@@ -20,21 +20,21 @@ import {
   Collapse,
   InputBase,
   Hidden,
-  IconButton
-} from "@material-ui/core";
+  IconButton,
+} from '@material-ui/core';
 
-import MenuIcon from "@material-ui/icons/Menu";
-import StarIcon from "@material-ui/icons/Star";
-import NotesIcon from "@material-ui/icons/Notes";
-import SearchIcon from "@material-ui/icons/Search";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import FolderIcon from "@material-ui/icons/Folder";
+import MenuIcon from '@material-ui/icons/Menu';
+import StarIcon from '@material-ui/icons/Star';
+import NotesIcon from '@material-ui/icons/Notes';
+import SearchIcon from '@material-ui/icons/Search';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import FolderIcon from '@material-ui/icons/Folder';
 
-import CreateNewFolder from "components/dialogs/create-new-folder";
-import AccountSettings from "components/dialogs/account-settings";
-import useSharedState from "shared/use-shared-state";
-import { foldersSubject } from "shared/global-store";
+import CreateNewFolder from 'components/dialogs/create-new-folder';
+import AccountSettings from 'components/dialogs/account-settings';
+import useSharedState from 'shared/use-shared-state';
+import { foldersSubject } from 'shared/global-store';
 
 const Navbar = () => {
   const classes = useStyles();
@@ -53,7 +53,7 @@ const Navbar = () => {
 
   const drawer = (
     <div>
-      <AppBar color="primary" position="static">
+      <AppBar position="static">
         <Toolbar className={classes.jottyLogoContainer}>
           {JottyIcon}
           <AccountSettings />
@@ -118,9 +118,9 @@ const Navbar = () => {
               placeholder="Search notes…"
               classes={{
                 root: classes.inputRoot,
-                input: classes.inputInput
+                input: classes.inputInput,
               }}
-              inputProps={{ "aria-label": "search" }}
+              inputProps={{ 'aria-label': 'search' }}
             />
           </div>
         </Toolbar>
@@ -129,14 +129,14 @@ const Navbar = () => {
         <Hidden smUp implementation="css">
           <Drawer
             variant="temporary"
-            anchor={theme.direction === "rtl" ? "right" : "left"}
+            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
             open={mobileOpen}
             onClose={handleDrawerToggle}
             classes={{
-              paper: classes.drawerPaper
+              paper: classes.drawerPaper,
             }}
             ModalProps={{
-              keepMounted: true // Better open performance on mobile.
+              keepMounted: true, // Better open performance on mobile.
             }}
           >
             {drawer}
@@ -145,7 +145,7 @@ const Navbar = () => {
         <Hidden xsDown implementation="css">
           <Drawer
             classes={{
-              paper: classes.drawerPaper
+              paper: classes.drawerPaper,
             }}
             variant="permanent"
             open
@@ -160,75 +160,86 @@ const Navbar = () => {
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles((theme: Theme) => {
+  let logoBackground: string =
+    theme.palette.type === 'dark'
+      ? 'linear-gradient(45deg, #ff4d73 30%, #FF8E53 90%)'
+      : 'linear-gradient(45deg, #45dcff 30%, #2196F3 90%)';
+  let searchbarBackground: string =
+    theme.palette.type === 'dark'
+      ? 'linear-gradient(45deg,  #FF8E53 30%, #ff4d73 90%)'
+      : 'linear-gradient(45deg, #2196F3 30%, #45dcff 90%)';
+
+  return createStyles({
     drawer: {
-      [theme.breakpoints.up("sm")]: {
+      [theme.breakpoints.up('sm')]: {
         width: drawerWidth,
-        flexShrink: 0
-      }
+        flexShrink: 0,
+      },
     },
     drawerPaper: {
-      width: drawerWidth
+      width: drawerWidth,
     },
     appBar: {
+      background: searchbarBackground,
       marginLeft: drawerWidth,
-      [theme.breakpoints.up("sm")]: {
-        width: `calc(100% - ${drawerWidth}px)`
-      }
+      [theme.breakpoints.up('sm')]: {
+        width: `calc(100% - ${drawerWidth}px)`,
+      },
     },
     jottyLogoContainer: {
-      justifyContent: "center",
-      flexDirection: "column",
-      height: "15rem"
+      background: logoBackground,
+      justifyContent: 'center',
+      flexDirection: 'column',
+      height: '15rem',
     },
     menuButton: {
       marginRight: theme.spacing(2),
-      [theme.breakpoints.up("sm")]: {
-        display: "none"
-      }
+      [theme.breakpoints.up('sm')]: {
+        display: 'none',
+      },
     },
     search: {
-      position: "relative",
+      position: 'relative',
       borderRadius: theme.shape.borderRadius,
       backgroundColor: fade(theme.palette.common.white, 0.15),
-      "&:hover": {
-        backgroundColor: fade(theme.palette.common.white, 0.25)
+      '&:hover': {
+        backgroundColor: fade(theme.palette.common.white, 0.25),
       },
       marginRight: theme.spacing(2),
       marginLeft: 0,
-      width: "100%",
-      [theme.breakpoints.up("sm")]: {
+      width: '100%',
+      [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(3),
-        width: "auto"
-      }
+        width: 'auto',
+      },
     },
     searchIcon: {
       width: theme.spacing(7),
-      height: "100%",
-      position: "absolute",
-      pointerEvents: "none",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center"
+      height: '100%',
+      position: 'absolute',
+      pointerEvents: 'none',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     inputRoot: {
-      color: "inherit"
+      color: 'inherit',
     },
     inputInput: {
       padding: theme.spacing(1, 1, 1, 7),
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("md")]: {
-        width: 200
-      }
-    }
-  })
-);
+      transition: theme.transitions.create('width'),
+      width: '100%',
+      [theme.breakpoints.up('md')]: {
+        width: 200,
+      },
+    },
+  });
+});
 
 const JottyIcon = (
   <img
-    src={require("../../images/jotty-light.png")}
+    src={require('../../images/jotty-light.png')}
     alt="jotty logo"
     height="75rem"
   />
