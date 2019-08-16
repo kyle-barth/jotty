@@ -3,13 +3,12 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 import {
   IconButton,
-  TextField,
-  Button,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogContentText,
-  DialogActions,
+  Avatar,
+  Typography,
 } from '@material-ui/core';
 
 import AccountIcon from '@material-ui/icons/AccountCircle';
@@ -50,35 +49,45 @@ function SimpleDialog(props: SimpleDialogProps) {
       open={open}
     >
       <DialogTitle id="form-dialog-title">
-        <p className={classes.dialogTitle}>Create new folder</p>
-        <IconButton
-          aria-label="close"
-          className={classes.closeButton}
-          onClick={onClose}
+        <div
+          style={{
+            display: 'inline-block',
+          }}
         >
-          <CloseIcon />
-        </IconButton>
+          <IconButton
+            aria-label="close"
+            className={classes.closeButton}
+            onClick={onClose}
+          >
+            <CloseIcon />
+          </IconButton>
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            height: '5rem',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar>YN</Avatar>
+          <Typography
+            variant="h5"
+            style={{ fontWeight: 'bold' }}
+            className={classes.dialogTitle}
+          >
+            Your Name
+          </Typography>
+        </div>
       </DialogTitle>
 
       <DialogContent>
         <DialogContentText>
           Group notes together by defining custom folders!
         </DialogContentText>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="name"
-          label="Folder Name"
-          fullWidth
-        />
       </DialogContent>
-
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleClose} color="secondary">
-          Add Folder
-        </Button>
-      </DialogActions>
     </Dialog>
   );
 }
