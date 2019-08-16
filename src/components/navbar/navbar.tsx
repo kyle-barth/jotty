@@ -126,7 +126,7 @@ const Navbar = () => {
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="note folders">
-        <Hidden smUp implementation="css">
+        <Hidden mdUp>
           <Drawer
             variant="temporary"
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
@@ -142,7 +142,7 @@ const Navbar = () => {
             {drawer}
           </Drawer>
         </Hidden>
-        <Hidden xsDown implementation="css">
+        <Hidden smDown>
           <Drawer
             classes={{
               paper: classes.drawerPaper,
@@ -172,7 +172,7 @@ const useStyles = makeStyles((theme: Theme) => {
 
   return createStyles({
     drawer: {
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up('md')]: {
         width: drawerWidth,
         flexShrink: 0,
       },
@@ -183,7 +183,7 @@ const useStyles = makeStyles((theme: Theme) => {
     appBar: {
       background: searchbarBackground,
       marginLeft: drawerWidth,
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up('md')]: {
         width: `calc(100% - ${drawerWidth}px)`,
       },
     },
@@ -195,7 +195,7 @@ const useStyles = makeStyles((theme: Theme) => {
     },
     menuButton: {
       marginRight: theme.spacing(2),
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up('md')]: {
         display: 'none',
       },
     },

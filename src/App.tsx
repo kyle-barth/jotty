@@ -61,14 +61,14 @@ const App: React.FC = () => {
           </div>
 
           <div className={classes.container}>
-            <Hidden only={['lg', 'xl']}>
+            <Hidden smUp>
               <div>
                 <NotesList />
               </div>
             </Hidden>
 
-            <Hidden mdDown>
-              <div style={{ width: '50%', minWidth: '30rem' }}>
+            <Hidden xsDown>
+              <div style={{ width: '50%', minWidth: '20rem' }}>
                 <NotesList />
               </div>
               <div>
